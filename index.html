@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Calulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="converter">
+        <h1 id="text"><b>Temperature Converter</b></h1>
+
+        <input id="display" type="text"  
+        placeholder="Enter Temperature"></input>
+       
+        <div class="buttons">
+            <button class="button" 
+            onclick="
+            document.querySelector('#display').value+='C';
+            "><b>Celsius</b></button>
+
+            <button class="button" 
+            onclick="
+            document.querySelector('#display').value+='F';"><b>Fahrenheit</b></button>
+
+        </div>
+
+        <button class="convert"
+        onclick="
+        const input=document.querySelector('#display').value.trim();
+        const result=document.querySelector('.result');
+        if(input.endsWith('C'))
+        {
+            let num=parseFloat(input);
+            if(isNaN(num))
+        {
+            result.innerText='Invalid Value';
+        }
+        else
+        {
+            let f=(num*9)/5+32;
+            result.innerText=`Result:${f.toFixed(2)}°F`;
+        }
+        }
+        else if(input.endsWith('F'))
+        {
+            let num=parseFloat(input);
+            if(isNaN(num))
+        {
+            result.innerText='Invalid Value';
+        }
+        else
+        {
+            let c=((num-32)*5)/9;
+            result.innerText=`Result:${c.toFixed(2)}°C`;
+        }
+        }
+        else
+        {
+            result.innerText='Please choose a unit.';
+        }
+        "
+        >Convert</button>
+        
+        <p class="result">Result will apper here</p>
+
+
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
